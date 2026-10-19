@@ -1,0 +1,47 @@
+# Haier haierATVnippori (device: nippori), Android TV 11 (SDK 30), firmware RTO5.250812.001.
+# Stock launcher: com.google.android.tvlauncher (disabled by launcher/build-and-install.sh).
+# Live TV app: com.mediatek.wwtv.tvcenter (MediaTek TV center).
+#
+# Apply:   TV_HOST=<tv ip> tools/disable.sh examples/haier-nippori/debloat.txt
+# Undo:    TV_HOST=<tv ip> tools/restore.sh examples/haier-nippori/debloat.txt
+# Everything is DISABLED, not uninstalled. Comment out any line you want to keep.
+#
+# Notes from this firmware:
+# - Manufacturer content/launcher: com.haier.launcher.haiermatrix is Haier TV+, a sponsored
+#   content center. Safe to disable once the replacement launcher is the default Home.
+# - ACR: tv.anoki.acr.controller does automatic content recognition (viewing tracking).
+# - Haier smart-home stack (ru.haier.evo, com.haier.apps.evoSmart, com.haierubic.usmartdevice)
+#   is only needed if you control Haier appliances from the TV.
+# - Russian streaming apps are preloaded; keep only the ones you actually use.
+# - Deliberately NOT in this list: com.cltv.fast (Live TV/tuner, iwedia), com.haier.overlay.tvcenter
+#   (RRO for com.mediatek.wwtv.tvcenter), com.haierubic.usmartdevice (PERSISTENT, system uid,
+#   INJECT_EVENTS/DEVICE_POWER), fusion.android.tv.demo (retail mode, system uid),
+#   com.haier.oemmanualtest (factory test, system uid, ChangeSourceService). Disabling any of
+#   these can break HDMI/source switching, the remote, or power control.
+
+# Haier telemetry / sponsored content / ACR
+com.haier.launcher.haiermatrix              # Haier TV+ sponsored content center
+tv.anoki.acr.controller                     # ACR viewing tracking
+com.haier.apps.shahid                       # Shahid streaming (preloaded)
+
+# Haier smart home (keep if you control Haier appliances)
+ru.haier.evo
+com.haier.apps.evoSmart
+
+# Preloaded streaming apps (not used)
+com.amazon.amazonvideo.livingroom           # Prime Video
+com.netflix.ninja                           # Netflix
+
+# Russian streaming apps (comment out the ones you use)
+ru.kinopoisk.tv
+ru.rt.video.app.tv
+ru.beeline.tve.android
+com.vk.tv
+ag.a24h.evotvch
+gpm.tnt_premier
+com.gsgroup.tricoloronline
+com.yandex.browser.tv
+
+# Google extras
+com.google.android.youtube.tvmusic           # YouTube Music on TV
+com.google.android.play.games
